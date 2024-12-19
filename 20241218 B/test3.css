@@ -1,0 +1,24 @@
+/* 일치 선택자 */
+/* span.orange{
+    color: orange;
+} */
+
+/* 자식 선택자 */
+/* ul > .orange{
+    color: red;
+} */
+
+/* 복합하위 선택자 */
+/* div .orange{
+    color: blue;
+} */
+
+/* 인접 형제 선택자 */
+/* .orange + li{
+    color: violet;
+} */
+
+/* 일반 형제 선택자 */
+.orange ~ li{
+    color: red;
+}
