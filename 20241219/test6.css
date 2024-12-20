@@ -1,0 +1,29 @@
+.boxwrap{
+    display: flex;
+}
+
+.box{
+    background-color: green;
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+}
+.box2{
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+
+    /* 전부가 적용 */
+    margin: 10px;
+
+    /* 상하, 좌우 */
+    margin: 10px 20px;
+
+    /* 상,우,하,좌 */
+    margin: 10px 10px 10px 10px;
+}
+
+/* margin: (상,하) (좌,우) */
+/* margin: (상), (우), (하), (좌) */
+

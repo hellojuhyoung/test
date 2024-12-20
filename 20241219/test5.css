@@ -1,0 +1,27 @@
+.box{
+    /* display: flex; */
+    width: 100%;
+}
+
+/* 새로운 div 만들어서 항상 정가운데로 유지 */
+.boxwrap{
+    max-width: 1280px;
+    display:flex;
+    justify-content: space-between;
+    margin: 0px auto;
+}
+
+.red{
+    width: 100%;
+    background-color: red;
+}
+.blue{
+    width: 100%;
+    background-color: blue;
+}
+.black{
+    width: 100%;
+    background-color: black;
+}
+
+/* width 100% 100px auto */

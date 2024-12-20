@@ -1,0 +1,16 @@
+.boxwrap{
+    background-color: beige;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kdt{
+    background-color: skyblue;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+}
