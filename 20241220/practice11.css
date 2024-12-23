@@ -1,0 +1,209 @@
+.container{
+    height: 500px;
+    width: 500px;
+    color: black;
+    border: 5px solid black;
+    position: relative;
+}
+
+.block1{
+    position: absolute;
+    top: 0%;
+    left: 0%
+}
+
+.vertical1{
+    position: absolute;
+    top: 350px;
+    width: 50px;
+    height: 100px;
+    background-color: purple;
+}
+
+.horizontal1{
+    position: absolute;
+    top: 450px;
+    width: 150px;
+    height: 50px;
+    background-color: purple;
+}
+
+.block2{
+    position: absolute;
+    top: 20%;
+}
+
+.vertical2{
+    position: absolute;
+    top: 350px;
+    left: 150px;
+    width: 50px;
+    height: 50px;
+    bottom: 0;
+    background-color: red;
+}
+
+.horizontal2{
+    position: absolute;
+    top: 300px;
+    left: 50px;
+    width: 250px;
+    height: 50px;
+    bottom: 0;
+    background-color: red;
+}
+
+.block3{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+.horizontal3{
+    position: absolute;
+    top: 450px;
+    left: 200px;
+    width: 300px;
+    height: 50px;
+    background-color: orange;
+}
+
+.layer3a{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 450px;
+    left: 300px;
+    background-color: aqua;
+    z-index: 1;
+}
+
+.layer3b{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 450px;
+    left: 400px;
+    background-color: aqua;
+    z-index: 1;
+}
+
+.block4{
+    position: absolute;
+    top: 50%;
+    left: 20%
+}
+
+.vertical4{
+    position: absolute;
+    left: 100px;
+    width: 50px;
+    height: 100px;
+    background-color: black;
+}
+
+.horizontal4{
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    background-color: black;
+}
+
+.block5{
+    position: absolute;
+    top: 35%;
+    left: 5%
+}
+
+.vertical5{
+    position: absolute;
+    top: -130px;
+    left: 50px;
+    width: 50px;
+    height: 150px;
+    background-color: black;
+}
+
+.horizontal5a{
+    position: absolute;
+    width: 250px;
+    height: 50px;
+    background-color: black;
+}
+
+.horizontal5b{
+    position: absolute;
+    top: -130px;
+    left: 100px;
+    width: 50px;
+    height: 50px;
+    background-color: black;
+}
+
+
+.block6{
+    position: absolute;
+    top: 45%;
+    left: 45%
+}
+
+.vertical6{
+    position: absolute;
+    top: -130px;
+    left: 100px;
+    width: 50px;
+    height: 150px;
+    background-color: black;
+}
+
+.horizontal6a{
+    position: absolute;
+    left: 100px;
+    width: 125px;
+    height: 50px;
+    background-color: black;
+}
+
+.horizontal6b{
+    position: absolute;
+    top: -130px;
+    left: 25px;
+    width: 200px;
+    height: 50px;
+    background-color: black;
+}
+
+.next{
+    width: 200px;
+    height: 200px;
+    left: 515px;
+    top: 8px;
+    color: black;
+    border: 2px solid black;
+    position: fixed;
+    margin: 0px auto;
+    display: flex;
+    justify-content: right;
+}
+
+.block7{
+    position: absolute;
+}
+
+.vertical7{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 50px;
+    height: 100px;
+    background-color: black;
+}
+
+.horizontal7{
+    position: absolute;
+    top: 125px;
+    left: 25px;
+    width: 150px;
+    height: 50px;
+    background-color: black;
+}

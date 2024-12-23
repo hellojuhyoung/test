@@ -1,16 +1,22 @@
-.boxwrap{
+
+body{
     background-color: lavender;
+}
+
+.boxwrap{
     padding: 10px;
     width: auto;
     height: auto;
 }
 .submit{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+  width: 50%;
+  margin: 0px auto;
+  display: flex;
+  justify-content: right;
 }
 .submit input[type="button"]:hover{
     opacity: 0.5;
+    cursor: pointer;
 }
 
 input[type="button"]{
