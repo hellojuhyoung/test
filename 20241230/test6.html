@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //for 문의 변형
+      //for-of : 배열의 반복에서 많이 쓰임
+
+      const fruits = ["apple", "banana", "grape", "melon"];
+      //   for (let i = 0; i < fruits.length; i++) {
+      //     console.log("for 문", fruits[i]);
+      //   }
+
+      //for(const 변수이름(아무거나) of 존재하는(탐색하고자 하는) 배열)
+      //   for (const fruit of fruits) {
+      //     //첫번째 : fruit = 'apple'
+      //     console.log("for-of 문", fruit);
+      //   }
+
+      //for-in : for(variable in object){}
+      //variable : This is a variable that will hold the name of each property in the object during each iteration.
+      //object : The object whose properties you want to iterate over.
+      //for(const 속성의 이름(아무거나) in 객체[속성])
+      const person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 30,
+      };
+
+      for (let key in person) {
+        console.log(`${key}: ${person[key]}`);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

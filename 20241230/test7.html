@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //문자열 관련 메소드
+
+      let string = "Happy day~! ";
+
+      console.log(string.length); // 12
+      console.log(string.toUpperCase()); //검색을 하는 상황; python, Python, PYTHON (client input) / Python (database)
+      // string.toLowerCase() -> python / database.toLowerCase() -> python
+
+      console.log(string.indexOf("p")); // output 2
+
+      //string.slice(startIDx,[endIdx])
+      // start index is inclusive and end index is exclusive (start, end]
+      console.log(string.slice(1, 4));
+
+      // phone.replace('-',''); 010-0000-0000 -> 0100000-0000
+      // phone.replaceAll('-','') 010-0000-0000 -> 01000000000
+      //   console.log(string.replace("-", ""));
+      console.log(string.replace("p", "a"));
+      console.log(string.replaceAll("p", "a"));
+
+      console.log(string.repeat(3));
+
+      //사용자에게 검색어를 받았을경우 예) ' python' , 'python  '
+      console.log(string.trim()); //앞 뒤 공백제거
+
+      //string.split('\n') // 엔터 기준으로 잘라서 저장 ('\n' 엔터 역활)
+      //string.split('\n') -> ['안녕하세요', '안녕하세요']
+      //for -> 적절한 위치에 br 태그 넣기
+      console.log(string.split("")); //한 글자씩 끊어서 배열에 담음
+      console.log(string.split(" ")); //단어 기준으로 끊어서 배열에 담음
+      console.log(string.split("a")); //a 글자를 기준으로 끊어서 배열에 담음
+    </script>
+  </body>
+</html>

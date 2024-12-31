@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // if statemnts
+      const number = 18;
+      //조건1
+      if (number >= 20) {
+        //조건1이 참이라면 실행
+        console.log("성인입니다.");
+      } else {
+        //조건1이 거짓이라면 실행
+        console.log("미성년자입니다.");
+      }
+
+      const str = "admin";
+      //조건1
+      if (str === "admin") {
+        console.log("관리자입니다.");
+        //조건2
+      } else if (str === "user") {
+        //조건1을 만족하지 않고, 조건2를 만족할 경우에 실행
+        console.log("회원입니다.");
+      } else {
+        //조건1을 만족하지 않고, 조건2를 만족하지 않은 경우에 실행
+        console.log("비회원입니다.");
+      }
+      if (number >= 20) {
+        if (str === "user") {
+          console.log("성인 회원입니다.");
+        }
+        console.log("성인 비회원입니다.");
+      } else {
+        console.log("미성년자입니다.");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

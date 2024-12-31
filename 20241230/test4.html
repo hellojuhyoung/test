@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // for vs while
+      // for : 반복되는 횟수를 구조적으로 지정하고 코드를 짜게 됨
+      // while : 반복되는 횟수를 모를때 사용
+      // while (조건문) {}
+
+      //   while (true) {
+      //     //infinite loop
+      //     if () break;
+      //   }
+
+      // let i = 0; //초기화
+      // while (i < 10) {
+      //   //조건문
+      //   console.log(i + "번째 안녕하세요."); //반복하고자 하는 명령문
+      //   i++; //증감문
+      // }
+
+      // 1번 방법
+      let number = 0;
+
+      while (true) {
+        number = Number(
+          prompt(
+            "어떤 게임을 할지 골라주세요. 1) 묵찌빠 2) 딱지치기 3) 무궁화 꽃이 피었습니다 0) 종료"
+          )
+        );
+        if (number === 0) break;
+        else console.log(number, "번 게임을 선택 하셨습니다.");
+      }
+
+      // 2번 방법
+      // let number = Number(
+      //   prompt(
+      //     "어떤 게임을 할지 골라주세요. 1) 묵찌빠 2) 딱지치기 3) 무궁화 꽃이 피었습니다 0) 종료"
+      //   )
+      // );
+      // while (number !== 0) {
+      //   console.log(number, "번 게임을 선택 하셨습니다.");
+
+      //   number = Number(
+      //     prompt(
+      //       "어떤 게임을 할지 골라주세요. 1) 묵찌빠 2) 딱지치기 3) 무궁화 꽃이 피었습니다 0) 종료"
+      //     )
+      //   );
+      // }
+    </script>
+  </head>
+  <body></body>
+</html>
