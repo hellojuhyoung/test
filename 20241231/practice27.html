@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const sameFruits = [];
+      const diffFruits = [];
+
+      let fruits1 = [
+        "사과",
+        "딸기",
+        "파인애플",
+        "수박",
+        "참외",
+        "오렌지",
+        "자두",
+        "망고",
+      ];
+      let fruits2 = ["수박", "사과", "참외", "오렌지", "파인애플", "망고"];
+
+      for (fruit1 = 0; fruit1 < fruits1.length; fruit1++) {
+        for (fruit2 = 0; fruit2 < fruits2.length; fruit2++) {
+          if (fruits1[fruit1] === fruits2[fruit2]) {
+            sameFruits.push(fruits1[fruit1]);
+          }
+        }
+      }
+
+      for (let i = 0; i < fruits1.length; i++) {
+        if (!fruits2.includes(fruits1[i])) {
+          diffFruits.push(fruits1[i]);
+        }
+      }
+      for (let i = 0; i < fruits2.length; i++) {
+        if (!fruits1.includes(fruits2[i])) {
+          diffFruits.push(fruits2[i]);
+        }
+      }
+
+      console.log(sameFruits);
+      console.log(diffFruits);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const object = { a: 1, b: 2, c: 3 };
+
+      const now = new Date(); // 이 코드가 읽히는 시간을 반환
+
+      const date = new Date(2016, 5, 25); // 년, 월, 일, 시, 분, 초
+      const date2 = new Date(2016, 5, 25, 15, 40);
+      const date3 = new Date("2016-05-25");
+      const date4 = new Date("2016/05/25");
+
+      // 2024-12-31 14시 기준
+      console.log(now.getFullYear()); // 년도를 반환 -> 2024
+      console.log(now.getDate()); // 일 반환 -> 31
+      console.log(now.getDay()); // 요일 반환 -> 화 (2) 숫자로 반환
+      console.log(now.getTime()); // 1970년 1월 1일로 부터 몇 ms가 흘렀는지를 숫자로 반환
+
+      //강의를 구매를 했는데, 1년 동안 수강 가능한 강의. (만료일 2025-12-31)
+      //2025년 11월 1일 접속해서 강의 수강한다면?
+
+      const expiredDate = new Date("2025-12-31");
+      //if now.getTime() > expiredDate.getTime(); => 만료가된 강의
+      //else => 만료되지 않음
+
+      console.log(now.getHours()); // 시간 -> 16
+      console.log(now.getMinutes()); // 분 -> 44
+      console.log(now.getSeconds()); // 초 -> 46
+
+      const year = now.getFullYear(); // 2024
+      const month = now.getMonth() + 1; // 12 (유의 getMonth한 후에 +1 하기) January is 0
+      const date5 = now.getDate(); // 31
+      console.log(`${year} - ${month} - ${date5}`);
+
+      // javascript class
+      // class: 객체를 만드는 틀 (붕어빵 기계)
+      // class 로 만들어지는 객체 (붕어빵)
+
+      console.log(Math.PI);
+      console.log(Math.E);
+      console.log(Math.min(2, 3, 4, 5, 6, 7, 1)); //최소값을 반환
+      console.log(Math.max(2, 3, 4, 5, 6, 7, 1)); //최대값을 반환
+      console.log(Math.random()); // 0 <= x < 1
+      console.log(Math.floor(3.14)); // 내림 (소수점 제거)
+      console.log(Math.ceil(3.14)); // 올림
+      console.log(Math.round(3.14)); // 반올림
+
+      // 1 ~ 10
+      // Math.random() : 0 <= x < 1
+      // Math.random() * 10 : 0 <= x < 10
+      // Math.random() * 10 + 1 : 1 <= x < 11
+      console.log(Math.floor(Math.random() * 10 + 1));
+
+      console.log(document);
+    </script>
+  </body>
+</html>
