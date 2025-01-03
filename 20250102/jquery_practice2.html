@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        width: 450px;
+        margin: 20px auto;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0 auto;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        height: 70px;
+        padding: 10px;
+        text-align: center;
+        vertical-align: top;
+      }
+
+      th {
+        height: 30px;
+        background-color: white;
+        text-align: center;
+      }
+      td:nth-child(1) {
+        color: red;
+      }
+
+      td:nth-child(7) {
+        color: blue;
+      }
+      .calendar-title {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .event-text {
+        font-size: 14px;
+        color: black;
+        display: block;
+      }
+      th:first-child {
+        color: red;
+      }
+
+      th:last-child {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>날짜: <input type="number" id="inputDate" min="1" max="31" /></div>
+    <br />
+    <div>내용: <input type="text" id="inputEvent" /></div>
+    <div>
+      <br />
+      <button class="addEvent" onclick="addEvent()">작성</button>
+    </div>
+    <div class="container"></div>
+  </body>
+
+  <script>
+    function createCalendar(year, month) {
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const title = document.createElement("h2");
+
+      const date = new Date(year, month - 1, 1);
+      const firstDay = date.getDay();
+
+      const daysInMonth = new Date(year, month, 0).getDate();
+
+      const table = document.createElement("table");
+      const thead = document.createElement("thead");
+      const tbody = document.createElement("tbody");
+
+      const headerRow = document.createElement("tr");
+      const daysOfWeek = ["日", "月", "火", "水", "木", "金", "土"];
+      daysOfWeek.forEach((day) => {
+        const th = document.createElement("th");
+        th.textContent = day;
+        headerRow.appendChild(th);
+      });
+      thead.appendChild(headerRow);
+
+      let dateCount = 1;
+      for (let i = 0; i < 6; i++) {
+        const row = document.createElement("tr");
+        for (let j = 0; j < 7; j++) {
+          const cell = document.createElement("td");
+          if (i === 0 && j < firstDay) {
+            cell.textContent = "";
+          } else if (dateCount <= daysInMonth) {
+            cell.textContent = dateCount;
+            cell.setAttribute("data-date", `${year}-${month}-${dateCount}`); // Add data-date attribute
+            dateCount++;
+          }
+          row.appendChild(cell);
+        }
+        tbody.appendChild(row);
+      }
+
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+      title.textContent = "2025년 1월";
+      title.classList.add("calendar-title");
+
+      container.appendChild(title);
+      container.appendChild(table);
+    }
+    function addEvent() {
+      const inputDay = document.getElementById("inputDate").value;
+      const inputEvent = document.getElementById("inputEvent").value;
+
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth() + 1; // Months are zero-based
+      const currentYear = currentDate.getFullYear();
+
+      const dateCells = document.querySelectorAll(
+        `td[data-date="${currentYear}-${currentMonth}-${inputDay}"]`
+      );
+
+      if (dateCells.length > 0) {
+        const existingEvents = dateCells[0].querySelectorAll(".event-text");
+        if (existingEvents.length > 0) {
+          existingEvents[0].textContent = inputEvent;
+        } else {
+          dateCells[0].innerHTML += `<span class="event-text">${inputEvent}</span>`;
+        }
+      } else {
+        alert("Invalid date.");
+      }
+    }
+    const container = document.querySelector(".container");
+    createCalendar(2025, 1);
+  </script>
+</html>

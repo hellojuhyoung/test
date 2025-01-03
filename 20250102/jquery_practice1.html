@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      .imageContainer {
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+        border: 5px solid orange;
+      }
+      .imageContainer img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .buttons {
+        width: auto;
+        height: auto;
+        background-color: black;
+        border: 1px solid white;
+        padding: 30px;
+      }
+      .buttonsGroup {
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        top: 250px;
+        overflow: auto;
+        color: white;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="imageContainer">
+      <img
+        id="image"
+        src="../20250102/images/jquery_practice1_images/과일을골라볼게요.png"
+        alt=""
+      />
+    </div>
+
+    <div class="buttonsGroup">
+      <div class="buttons" onclick="changeImage('사과')">사과</div>
+      <div class="buttons" onclick="changeImage('바나나')">바나나</div>
+      <div class="buttons" onclick="changeImage('포도')">포도</div>
+      <div class="buttons" onclick="changeImage('복숭아')">복숭아</div>
+    </div>
+  </body>
+  <script>
+    function changeImage(fruit) {
+      if (fruit === "사과") {
+        document.getElementById("image").src =
+          "https://www.applesfromny.com/wp-content/uploads/2020/05/20Ounce_NYAS-Apples2.png";
+      } else if (fruit === "바나나") {
+        document.getElementById("image").src =
+          "https://static.wixstatic.com/media/53e8bb_a1e88e551162485eb4ff962437300872~mv2.jpeg/v1/crop/x_0,y_105,w_1024,h_919/fill/w_840,h_754,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Banana.jpeg";
+      } else if (fruit === "포도") {
+        document.getElementById("image").src =
+          "https://www.heddensofwoodtown.co.uk/wp-content/uploads/2020/05/grapes_green_opt.jpg";
+      } else {
+        document.getElementById("image").src =
+          "https://aramgarhorchards.com/wp-content/uploads/2018/08/peach-2.jpg.webp";
+      }
+    }
+  </script>
+</html>

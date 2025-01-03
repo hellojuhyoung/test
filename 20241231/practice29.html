@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- 실습2 방명록 만들기 -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>방명록 입니다</h1>
+    <div>
+      작성자
+      <input type="text" id="visitor" />
+    </div>
+    <br />
+    <div>
+      내용
+      <input type="text" id="content" size="100" />
+    </div>
+    <br />
+    <div>
+      <button class="post" onclick="post()">작성</button>
+    </div>
+    <br />
+    <div>
+      <table>
+        <tr>
+          <th>번호</th>
+          <th>작성자</th>
+          <th>내용</th>
+          <th>작성일</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>김규리</td>
+          <td>여러분 만나서 반가워요</td>
+          <td>2022-7-2 15:30</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>김규리</td>
+          <td>오늘 수업도 열심히 해봐요</td>
+          <td>2022-7-2 15:35</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>홍길동</td>
+          <td>안뇽!</td>
+          <td>2022-7-2 15:40</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <script>
+    function post() {
+      //get name of the visitor
+      const name = document.querySelector("#visitor").value;
+      //get content
+      const content = document.querySelector("#content").value;
+      //get the time posted
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      const hours = String(now.getHours()).padStart(2, "0");
+      const minutes = String(now.getMinutes()).padStart(2, "0");
+      const time = `${year}-${month}-${day} ${hours}:${minutes}`;
+      //create table
+      //index / name / content / time
+    }
+  </script>
+</html>
