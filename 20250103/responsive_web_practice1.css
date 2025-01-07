@@ -1,0 +1,25 @@
+.menuWrap {
+  display: flex;
+  justify-content: center;
+  margin: 0px auto;
+  color: black;
+  background-color: lightblue;
+}
+.menu {
+  margin: 0px 10px;
+  text-align: center;
+}
+.top {
+  height: 100px;
+  background: lightblue;
+}
+@media screen and (max-width: 768px) {
+  .menuWrap {
+    display: block;
+    background-color: skyblue;
+    div {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}

@@ -19,12 +19,12 @@
     <h1>방명록 입니다</h1>
     <div>
       작성자
-      <input type="text" id="visitor" />
+      <input type="text" id="visitorInput" />
     </div>
     <br />
     <div>
       내용
-      <input type="text" id="content" size="100" />
+      <input type="text" id="contentInput" size="100" />
     </div>
     <br />
     <div>
@@ -33,49 +33,74 @@
     <br />
     <div>
       <table>
-        <tr>
-          <th>번호</th>
-          <th>작성자</th>
-          <th>내용</th>
-          <th>작성일</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>김규리</td>
-          <td>여러분 만나서 반가워요</td>
-          <td>2022-7-2 15:30</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>김규리</td>
-          <td>오늘 수업도 열심히 해봐요</td>
-          <td>2022-7-2 15:35</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>홍길동</td>
-          <td>안뇽!</td>
-          <td>2022-7-2 15:40</td>
-        </tr>
+        <tbod>
+          <tr>
+            <th>번호</th>
+            <th>작성자</th>
+            <th>내용</th>
+            <th>작성일</th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>김규리</td>
+            <td>여러분 만나서 반가워요</td>
+            <td>2022-7-2 15:30</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>김규리</td>
+            <td>오늘 수업도 열심히 해봐요</td>
+            <td>2022-7-2 15:35</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>홍길동</td>
+            <td>안뇽!</td>
+            <td>2022-7-2 15:40</td>
+          </tr>
+        </tbod>
       </table>
     </div>
   </body>
   <script>
-    function post() {
-      //get name of the visitor
-      const name = document.querySelector("#visitor").value;
-      //get content
-      const content = document.querySelector("#content").value;
-      //get the time posted
+    let rowIndex = 4;
+
+    function getCurrentTime() {
       const now = new Date();
-      const year = now.getFullYear();
-      const month = String(now.getMonth() + 1).padStart(2, "0");
-      const day = String(now.getDate()).padStart(2, "0");
-      const hours = String(now.getHours()).padStart(2, "0");
-      const minutes = String(now.getMinutes()).padStart(2, "0");
-      const time = `${year}-${month}-${day} ${hours}:${minutes}`;
-      //create table
-      //index / name / content / time
+      return (
+        now.getFullYear() +
+        "-" +
+        (now.getMonth() + 1).toString().padStart(2, "0") +
+        "-" +
+        now.getDate().toString().padStart(2, "0") +
+        " " +
+        now.getHours().toString().padStart(2, "0") +
+        ":" +
+        now.getMinutes().toString().padStart(2, "0")
+      );
     }
+
+    const postButton = document.querySelector(".post");
+    postButton.addEventListener("click", () => {
+      const visitorInput = document.getElementById("visitorInput").value;
+      const contentInput = document.getElementById("contentInput").value;
+      const currentTime = getCurrentTime();
+
+      const tableBody = document.querySelector("tbody");
+      const newRow = document.createElement("tr");
+      newRow.innerHTML = `
+    <td>${rowIndex}</td>
+    <td>${visitorInput}</td>
+    <td>${contentInput}</td>
+    <td>${currentTime}</td>
+  `;
+
+      tableBody.appendChild(newRow);
+
+      rowIndex++;
+
+      document.getElementById("visitorInput").value = "";
+      document.getElementById("contentInput").value = "";
+    });
   </script>
 </html>
