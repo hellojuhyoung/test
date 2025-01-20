@@ -53,6 +53,7 @@ const data = [
 ];
 
 // question1
+//creating table elements (table, tableHead, tableBody)
 const table = document.createElement("table");
 const tableHead = document.createElement("thead");
 const tableBody = document.createElement("tbody");
@@ -70,11 +71,13 @@ tableHead.appendChild(headerRow);
 
 // Create table data rows
 data.forEach((person) => {
-  //creating rows; columns are created separately
+  //everytime it loops through, the row is created with 'name', 'age', 'career', 'nickname'
+  //creating rows;
   const row = document.createElement("tr");
 
   //creating alert message when a row is clicked
   row.addEventListener("click", () => {
+    //an empty string is declared to insert proper string depending on the age of a person
     let personAgeCheck = "";
     if (person.age > 19) {
       personAgeCheck += "성인 입니다";
@@ -82,6 +85,9 @@ data.forEach((person) => {
       personAgeCheck += "미성년자 입니다";
     }
 
+    // declares variable called personInfo then gets the name and age by getting the keys to their object values
+    // since the career and nickname has nested object with multiple keys and values within an array
+    // the titles and names were imported using .map method and each key was joined with ', '
     let personInfo = `이름은 ${person.name} 이고, 나이는 ${
       person.age
     }이며 ${personAgeCheck} 커리어에는 ${person.careers
@@ -91,6 +97,10 @@ data.forEach((person) => {
       .join(", ")}이 있습니다.`;
     alert(personInfo);
   });
+  //for name and age rows, the cell is first created using 'td' element
+  //the text of the name and age were made by textContent
+  //class tag is added
+  //to that declared class tag row is then added using .appendChild
 
   //name
   const nameCell = document.createElement("td");
@@ -103,6 +113,11 @@ data.forEach((person) => {
   ageCell.textContent = person.age;
   ageCell.classList.add("age_cell");
   row.appendChild(ageCell);
+
+  //similar to name and age, but the only difference is that
+  //since there are multiple values and keys to careers and nickname
+  //list was created then each key was added to the list
+  //this was done to make the cell vertical with all the items
 
   //careers
   const careersCell = document.createElement("td");
@@ -147,9 +162,12 @@ mainWrap.appendChild(table);
 //
 
 //question2
+//first define what is adults and minors with the number 19
 const adults = data.filter((person) => person.age >= 19);
 const minors = data.filter((person) => person.age < 19);
 
+//map through careers and nicknames to make a new array for the person
+//and join them with ', '
 function createPersonText(person) {
   const careersList = person.careers.map((career) => career.title).join(", ");
   const nicknamesList = person.nickName
@@ -159,9 +177,15 @@ function createPersonText(person) {
 }
 
 function getPluralNames(people) {
+  //if there is 1 person then follow the code below
   if (people.length === 1) {
     return `${people[0].name}이 있고`;
   } else {
+    //if there is more than 1 person, then map through the name
+    //then creates a new array
+    //make the people variable with person.name from the names list
+    //first person except the last person using .slice(0, -1)
+    //then add the last person using people[people.length - 1].name
     return (
       people
         .map((person) => person.name)
@@ -175,13 +199,20 @@ function getPluralNames(people) {
 }
 
 // Minors section
+//creates 'div' tag as minorsText
 const minorsText = document.createElement("div");
+//'div' tag class name as 'minors'
 minorsText.classList.add("minors");
+//using the 'getPluralNames' function check how many minors there are
+//then return the names and join by ', '
+//by creating a new array using .map() method
+//finally then add to the mainWrap using .appendChild()
 minorsText.textContent = `1. 미성년자는 ${getPluralNames(minors)}`;
 minorsText.textContent += minors.map(createPersonText).join(", ");
 mainWrap.appendChild(minorsText);
 
 // Adults section
+//same steps were performed with the minors
 const adultsText = document.createElement("div");
 adultsText.classList.add("adults");
 adultsText.textContent = `2. 성인은 ${getPluralNames(adults)}`;
@@ -192,6 +223,7 @@ mainWrap.appendChild(adultsText);
 //
 //
 
+//question3
 function findLongestNickname(person) {
   let longestNickname = "";
   person.nickName.forEach((nickname) => {
