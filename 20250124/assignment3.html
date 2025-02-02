@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="../20250124/assignment3.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .main-wrap {
+        max-width: 1000px;
+        margin: 0px auto;
+        display: flex;
+        justify-content: center;
+      }
+      .input-wrap {
+        max-width: 1000px;
+        margin: 100px auto;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px 10px;
+      }
+      table {
+        width: 100%;
+      }
+      table th {
+        background-color: lightblue;
+      }
+      input {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+      }
+      /* .input-wrap div {
+          opacity: 0;
+        } */
+    </style>
+  </head>
+  <body>
+    <div class="input-wrap">
+      <!-- 아이디는 숫자 중복 불가 -->
+      <input
+        id="id"
+        type="number"
+        placeholder="아이디를 입력해 주세요."
+        oninput="Errors()"
+      />
+      <div id="idError"></div>
+      <!-- 이름 중복 가능 -->
+      <input id="name" placeholder="이름을 입력해 주세요." oninput="Errors()" />
+      <div id="nameError"></div>
+      <!--  -->
+      <!-- 나이 숫자 150살 이하-->
+      <input
+        id="age"
+        type="number"
+        placeholder="나이를 입력해 주세요."
+        oninput="Errors()"
+      />
+      <div id="ageError"></div>
+      <!-- 경력사항 최소 15자리 이상 -->
+      <input
+        id="career"
+        placeholder="경력을 입력해 주세요."
+        oninput="Errors()"
+      />
+      <div id="careerError"></div>
+      <!-- 별명 최소 2자리 이상, 중복불가 -->
+      <input
+        id="nickname"
+        placeholder="별명을 입력해 주세요."
+        oninput="Errors()"
+      />
+      <div id="nicknameError"></div>
+      <br />
+      <button onclick="clickEvent();">저장</button>
+    </div>
+
+    <!-- 테이블 -->
+    <div class="main-wrap"></div>
+  </body>
+</html>
