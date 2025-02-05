@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .imageContainer img {
+        width: 200px;
+        height: 200px;
+        bottom: 0;
+        border: 1px yellow;
+        object-fit: contain;
+      }
+      .buttonsContainer {
+        padding: 20px 20px;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function changeImage(fruit) {
+        let img = document.getElementById("image");
+        if (fruit === "apple") {
+          img.src = "../20250205/images/apple.png";
+        } else if (fruit === "banana") {
+          img.src = "../20250205/images/banana.avif";
+        } else if (fruit === "grape") {
+          img.src = "../20250205/images/grapes.jpg";
+        } else if (fruit === "peach") {
+          img.src = "../20250205/images/peach.webp";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="imageContainer">
+      <img
+        src="../20250205/images/과일을 골라볼게요.png"
+        alt=""
+        id="image"
+      />
+    </div>
+
+    <div class="buttonsContainer">
+      <button id="apple" onclick="changeImage('apple')">사과</button>
+      <button id="banana" onclick="changeImage('banana')">바나나</button>
+      <button id="grape" onclick="changeImage('grape')">포도</button>
+      <button id="peach" onclick="changeImage('peach')">복숭아</button>
+    </div>
+  </body>
+</html>
