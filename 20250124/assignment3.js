@@ -1,6 +1,5 @@
 //globally declared variables
 let dataStorage = [];
-let userLookup = {};
 
 //upon load of the html page the following is executed
 window.onload = function () {
@@ -19,14 +18,24 @@ function clickEvent() {
 
 //series of validations are executed and
 //returns the object validate functions as an array validations
-function validateInputs() {
-  const idInput = document.getElementById("id").value;
-  const nameInput = document.getElementById("name").value;
-  const ageInput = document.getElementById("age").value;
-  const careerInput = document.getElementById("career").value;
-  const nicknameInput = document.getElementById("nickname").value;
+function validateInputs(id = null) {
+  let IDInput, nameInput, ageInput, careerInput, nicknameInput;
+  if (id) {
+    IDInput = null;
+    nameInput = document.getElementById(`name${id}`).value;
+    ageInput = document.getElementById(`age${id}`).value;
+    careerInput = document.getElementById(`career${id}`).value;
+    nicknameInput = document.getElementById(`nickname${id}`).value;
+  } else {
+    IDInput = document.getElementById("id").value;
+    nameInput = document.getElementById("name").value;
+    ageInput = document.getElementById("age").value;
+    careerInput = document.getElementById("career").value;
+    nicknameInput = document.getElementById("nickname").value;
+  }
+
   let data = {
-    userID: idInput,
+    userID: IDInput,
     userName: nameInput,
     userAge: ageInput,
     userCareer: careerInput,
@@ -107,7 +116,7 @@ function validateInputs() {
 }
 
 //throws error messages if a validate function returns true or false
-function Errors() {
+function Errors(id = null) {
   const {
     validations: [
       validateID,
@@ -117,11 +126,21 @@ function Errors() {
       validateNickname,
     ],
   } = validateInputs();
-  const idOutput = document.getElementById("idError");
-  const nameOutput = document.getElementById("nameError");
-  const ageOutput = document.getElementById("ageError");
-  const careerOutput = document.getElementById("careerError");
-  const nicknameOutput = document.getElementById("nicknameError");
+
+  let idOutput, nameOutput, ageOutput, careerOutput, nicknameOutput;
+  if (id) {
+    idOutput = null;
+    nameOutput = document.getElementById(`nameError${id}`);
+    ageOutput = document.getElementById(`ageError${id}`);
+    careerOutput = document.getElementById(`careerError${id}`);
+    nicknameOutput = document.getElementById(`nicknameError${id}`);
+  } else {
+    idOutput = document.getElementById("idError");
+    nameOutput = document.getElementById("nameError");
+    ageOutput = document.getElementById("ageError");
+    careerOutput = document.getElementById("careerError");
+    nicknameOutput = document.getElementById("nicknameError");
+  }
 
   function isIDValid() {
     if (!validateID()) {
@@ -301,107 +320,71 @@ function saveDataToLocalStorage() {
 }
 
 function loadDataFromLocalStorage() {
-  // if (dataStorage.length === 0) {
-  //   return false;
-  // } else {
-  //   createTable();
-  // }
-
   if (dataStorage.length === 0) {
     return false;
   } else {
-    dataStorage = JSON.parse(localStorage.getItem("data"));
-    dataStorage.forEach((user) => {
-      userLookup[user.userID] = user;
-    });
     createTable();
   }
 }
 
 //creates table in the input-wrap tag from the html
 function createTable() {
-  const mainWrap = document.querySelector(".main-wrap"); //html mian-wrap is selected
-  const headerRow = document.createElement("tr"); //table headerrow is generated
-  const tableHead = document.createElement("thead"); //table head is generated
-  const table = document.createElement("table"); //table is genereated
-  const tableBody = document.createElement("tbody"); //table body is generated
-  const headerCells = ["Name", "Age", "Career", "Nickname", "Edit / Delete"]; //header cell with their names
+  const mainWrap = document.querySelector(".main-wrap");
 
-  //loops through to create the header of the table
-  headerCells.forEach((cellText) => {
-    const th = document.createElement("th");
-    th.textContent = cellText;
-    th.style.textAlign = "center";
-    headerRow.appendChild(th);
-  });
+  // Create table element
+  const table = document.createElement("table");
 
-  //accesses dataStorage array then loops through to create
-  //table elements; cells
-  dataStorage.forEach((input) => {
-    const row = document.createElement("tr");
-    // const input_id = document.createElement("td");
-    const input_name = document.createElement("td");
-    const input_age = document.createElement("td");
-    const input_career = document.createElement("td");
-    const input_nickName = document.createElement("td");
-    const action_cell = document.createElement("td");
-    const edit_button = document.createElement("button");
-    const delete_button = document.createElement("button");
+  // Create table head
+  const tableHead = document.createElement("thead");
+  const headerRow = document.createElement("tr");
+  const headerCells = ["Name", "Age", "Career", "Nickname", "Edit / Delete"];
 
-    // add the userID as a data attribute
-    edit_button.dataset.userID = input.userID;
-    delete_button.dataset.userID = input.userID;
-
-    edit_button.addEventListener("click", () => editButton(row, input.userID));
-
-    delete_button.addEventListener("click", function () {
-      const userID = this.dataset.userID;
-      delete_button(userID);
-    });
-
-    //the text format in html declared
-    input_name.textContent = input.userName;
-    input_age.textContent = input.userAge;
-    input_career.textContent = input.userCareer;
-    input_nickName.textContent = input.userNickname;
-
-    input_name.dataset.property = "userName";
-    input_age.dataset.property = "userAge";
-    input_career.dataset.property = "userCareer";
-    input_nickName.dataset.property = "userNickname";
-
-    edit_button.textContent = "Edit";
-    delete_button.textContent = "Delete";
-
-    // input_id.classList.add("input_id");
-    input_name.classList.add("input_name");
-    input_age.classList.add("input_age");
-    input_career.classList.add("input_career");
-    input_nickName.classList.add("input_nickName");
-    edit_button.classList.add("edit_button");
-    delete_button.classList.add("delete_button");
-
-    //added to row
-    action_cell.appendChild(edit_button);
-    action_cell.appendChild(delete_button);
-    row.appendChild(input_name);
-    row.appendChild(input_age);
-    row.appendChild(input_career);
-    row.appendChild(input_nickName);
-    row.appendChild(action_cell);
-
-    //row added to table body
-    tableBody.appendChild(row);
-  });
+  let headerHTML = ""; // Build header HTML string
+  for (let i = 0; i < headerCells.length; i++) {
+    headerHTML += `<th style="text-align: center;">${headerCells[i]}</th>`;
+  }
+  headerRow.innerHTML = headerHTML; // Set header row HTML
   tableHead.appendChild(headerRow);
   table.appendChild(tableHead);
+
+  // Create table body
+  const tableBody = document.createElement("tbody");
+  let bodyHTML = ""; // Build body HTML string
+
+  for (let i = 0; i < dataStorage.length; i++) {
+    const data = dataStorage[i];
+    bodyHTML +=
+      //the whole row is assigned with userID
+      //each cell is assigned with userID along with their values
+      //imported from the localstorage using 'data.userName' format
+      `
+      <tr class="tr${data.userID}">
+        <td id="name${data.userID}" >${data.userName}
+        <div id='nameError${data.userID}'></div></td>
+        <td id="age${data.userID}" >${data.userAge}
+        <div id='ageError${data.userID}'></div></td>
+        <td id="career${data.userID}" >${data.userCareer}
+        <div id='careerError${data.userID}'></div></td>
+        <td id="nickname${data.userID}">${data.userNickname}
+        <div id='nicknameError${data.userID}'></div></td>
+        <td class="action_cell">
+          <button class="editBtn${data.userID}" onclick="updateData(${data.userID})">Edit</button>
+          <button class="delete_button" onclick="deleteData(${data.userID})">Delete</button>
+        </td>
+      </tr>
+    `;
+  }
+  tableBody.innerHTML = bodyHTML; // Set table body HTML
   table.appendChild(tableBody);
   mainWrap.appendChild(table);
-
   return table;
 }
+// row.innerHTML = `<td class='td${id}'}>
+
+// </td>`;
 
 // add rows to the existing table
+
 function addRowstoTable(data) {
   //declares an array 'dataArray' then temporarily stores the input
   //object data from the html inputs
@@ -440,198 +423,99 @@ function addRowstoTable(data) {
   });
 }
 
-// function editButton() {
-//   const table = createTable();
-//   console.log(typeof table, table);
-// }
+// delete
+const deleteData = (id) => {
+  const trWrap = document.querySelector(`.tr${id}`);
+  trWrap.remove();
 
-// function editButton(userID, table) {
-//   dataStorage = JSON.parse(localStorage.getItem("data"));
-//   const userData = dataStorage.find((user) => user.userID === userID);
+  const delete_data = dataStorage.filter(
+    (currentRow) => Number(currentRow.userID) !== id
+  );
+  localStorage.setItem("data", JSON.stringify(delete_data));
+};
 
-//   if (userData) {
-//     const rows = table.querySelectorAll("tbody tr");
-//     let targetRow = null;
-//     rows.forEach((row) => {
-//       if (row.querySelector("[data-user-i-d]").dataset.userID === userID) {
-//         targetRow = row;
-//         return;
-//       }
-//     });
+//update data from input box
+const updateData = (id) => {
+  //selects the edit button and other elements by their id
+  const editBtn = document.querySelector(`.editBtn${id}`);
+  const nameDocu = document.getElementById(`name${id}`);
+  const ageDocu = document.getElementById(`age${id}`);
+  const careerDocu = document.getElementById(`career${id}`);
+  const nicknameDocu = document.getElementById(`nickname${id}`);
 
-//     if (targetRow) {
-//       //replace cells with input boxes
-//       for (let i = 0; i < targetRow.cells.length - 1; i++) {
-//         //exclude cell with buttons
-//         const cell = targetRow.cells[i];
-//         const property = cell.dataset.property; //get properties (userID, userName, userAge...)
-//         const inputValue = userData[property];
+  //upon 'edit' button clicked, changes the text to 'save'
+  //when text is changed to 'save', series of elements are converted
+  //to input field instead of innerText, the existing values
+  //stay in the input boxes
+  if (editBtn.innerText == "Edit") {
+    editBtn.innerText = "Save";
+    nameDocu.innerHTML = `<input id="nameInput${id}" value="${nameDocu.innerText}"} />`;
+    ageDocu.innerHTML = `<input id="ageInput${id}" value="${ageDocu.innerText}"} />`;
+    careerDocu.innerHTML = `<input id="careerInput${id}" value="${careerDocu.innerText}"} />`;
+    nicknameDocu.innerHTML = `<input id="nicknameInput${id}" value="${nicknameDocu.innerText}"} />`;
 
-//         //create the input element and set its value
-//         let inputElement = cell.querySelector("input");
-
-//         if (!inputElement) {
-//           inputElement = document.createElement("input");
-//           if (property === "userAge") {
-//             inputElement.type = "number";
-//           } else {
-//             inputElement.type = "text";
-//           }
-//           cell.innerHTML = "";
-//           cell.appendChild(inputElement);
-//         }
-
-//         inputElement.value = inputValue;
-//       }
-//       //change the 'edit' button to 'save'
-//       const edit_Button =
-//         targetRow.cells[targetRow.cells.length - 1].querySelector("button");
-//       edit_Button.textContent = "Save";
-//       //remove the old listener
-//       edit_Button.removeEventListener("click", arguments.callee);
-//       //add the save listener
-//       edit_Button.addEventListener("click", () =>
-//         saveChanges(targetRow, userID)
-//       );
-//     }
-//   }
-// }
-//
-//
-//
-//in progress
-function editButton(row, userID) {
-  const user = userLookup[userID];
-
-  if (user) {
-    for (let i = 0; i < row.cells.length - 1; i++) {
-      const cell = row.cells[i];
-      const property = cell.dataset.property;
-      const inputValue = user[property];
-      let inputElement = cell.querySelector("input");
-
-      if (!inputElement) {
-        inputElement = document.createElement("input");
-        inputElement.type = property === "userAge" ? "number" : "text";
-        cell.innerHTML = "";
-        cell.appendChild(inputElement);
+    //
+    //
+    //
+    const validateRow = document.querySelector(`.tr${id}`);
+    console.log(id, validateRow);
+    validateRow.addEventListener("input", function (event) {
+      const [
+        isIDValid,
+        isNameValid,
+        isAgeValid,
+        isCareerValid,
+        isNicknameValid,
+      ] = Errors();
+      console.log("hello world");
+      if (event.target.id === `nameInput${id}`) {
+        isNameValid(event.target.value);
+      } else if (event.target.id === `ageInput${id}`) {
+        isAgeValid(event.target.value);
+      } else if (event.target.id === `careerInput${id}`) {
+        isCareerValid(event.target.value);
+      } else if (event.target.id === `nicknameInput${id}`) {
+        isNicknameValid(event.target.value);
       }
-      inputElement.value = inputValue;
-    }
+    });
+    //
+    //
+    //
+  } else {
+    //other than the case of 'edit' button NOT 'edit'
+    //careerInput retrieves the input field value generated in the
+    //if statement section, then passes onto careerDocu.innerText
+    //where careerDocu is the 'td' element class name
+    const nameInput = document.getElementById(`nameInput${id}`).value;
+    const ageInput = document.getElementById(`ageInput${id}`).value;
+    const careerInput = document.getElementById(`careerInput${id}`).value;
+    const nicknameInput = document.getElementById(`nicknameInput${id}`).value;
 
-    const edit_button = row.cells[row.cells.length - 1].querySelector("button");
-    edit_button.textContent = "Save";
-    edit_button.removeEventListener("click", arguments.callee); // Remove old listener
-    edit_button.addEventListener("click", () => saveChanges(row, userID)); // Add save listener
-  }
-}
-//
-//
-//
-// function saveChanges(row, userID) {
-//   dataStorage = JSON.parse(localStorage.getItem("data"));
-//   let userUpdate = dataStorage.find((user) => user.userID === userID);
+    nameDocu.innerText = nameInput;
+    ageDocu.innerText = ageInput;
+    careerDocu.innerText = careerInput;
+    nicknameDocu.innerText = nicknameInput;
 
-//   for (let i = 0; i < row.cells.length - 1; i++) {
-//     const cell = row.cells[i];
-//     const inputElement = cell.querySelector("input");
-//     const property = cell.dataset.property;
-//     userUpdate[property] = inputElement.value;
-//   }
-
-//   dataStorage[userUpdate] = userUpdate;
-//   localStorage.setItem("data", JSON.stringify(dataStorage));
-
-//   // revert to display mode
-//   for (let i = 0; i < row.cells.length - 1; i++) {
-//     const cell = row.cells[i];
-//     const property = cell.dataset.property;
-//     // console.log("save property", property);
-//     cell.textContent = userUpdate[property]; //set text from updated userID
-//     cell.innerHTML = "";
-//     cell.appendChild(document.createTextNode(userUpdate[property]));
-//   }
-
-//   // change 'save' back to 'edit'
-//   const editButton = row.cells[row.cells.length - 1].querySelector("button");
-//   editButton.textContent = "Edit";
-//   editButton.removeEventListener("click", arguments.callee);
-//   editButton.addEventListener("click", () => editButton(userID, row));
-// }
-
-//
-//
-//
-//in progress
-function saveChanges(row, userID) {
-  for (const user of dataStorage) {
-    const userUserID = parseInt(user.userID, 10);
-    const userIDasInt = parseInt(userID, 10);
-
-    if (userUserID === userIDasInt) {
-      //1. find all input elements in the row
-      const inputs = row.querySelectorAll("input");
-
-      //2. diterate through the inputs and update the user object
-      inputs.forEach((input) => {
-        const propertyName = input.dataset.property;
-        user[propertyName] = input.value;
-      });
-
-      // for (let i = 0; i < row.cells.length - 1; i++) {
-      //   const cell = row.cells[i];
-      //   const input = cell.querySelector("input");
-
-      //   if (input) {
-      //     const propertyName = Object.keys(user)[i + 1];
-      //     user[propertyName] = input.value;
-      //   }
-      // }
-
-      localStorage.setItem("data", JSON.stringify(dataStorage));
-
-      for (let i = 0; i < row.cells.length - 1; i++) {
-        const cell = row.cells[i];
-        const propertyName = Object.keys(user)[i + 1];
-        cell.textContent = user[propertyName];
-        const inputElement = cell.querySelector("input");
-        if (inputElement) {
-          cell.removeChild(inputElement);
-        }
+    const update_data = dataStorage.map((newData) => {
+      if (Number(newData.userID) == id) {
+        return {
+          ...newData,
+          userName: nameInput,
+          userAge: ageInput,
+          userCareer: careerInput,
+          userNickname: nicknameInput,
+        };
+      } else {
+        return newData;
       }
-      return;
-    }
+    });
+
+    localStorage.setItem("data", JSON.stringify(update_data));
+
+    editBtn.innerText = "Edit";
   }
-  // for (const user of dataStorage) {
-  //   const userUserID = parseInt(user.userID, 10);
-  //   const userIDasInt = parseInt(userID, 10);
+};
 
-  //   if (userUserID === userIDasInt) {
-  //     for (let i = 0; i < row.cells.length - 1; i++) {
-  //       const cell = row.cells[i];
-  //       const property = cell.dataset.property;
-  //       let inputElement = cell.querySelector("input");
-  //       user[property] = inputElement.value;
-  //     }
-  //   }
-  //   localStorage.setItem("data", JSON.stringify(dataStorage));
-
-  //   for (let i = 0; i < row.cells.length - 1; i++) {
-  //     const cell = row.cells[i];
-  //     const property = cell.dataset.property;
-  //     cell.textContent = user[property];
-  //     const inputElement = cell.querySelector("input");
-  //     if (inputElement) {
-  //       cell.removeChild(inputElement);
-  //     }
-  //   }
-  //   const edit_button = row.cells[row.cells.length - 1].querySelector("button");
-  //   edit_button.textContent = "Edit";
-  //   edit_button.removeEventListener("click", arguments.callee);
-  //   edit_button.addEventListener("click", () => editButton(row, userID));
-
-  //   return;
-  // }
-}
-
-function deleteButton() {}
+//
+//
+//
