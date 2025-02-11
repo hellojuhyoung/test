@@ -1,0 +1,39 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#saveInputwrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#saveInputwrap input {
+  margin: 10px;
+  width: 200px;
+}
+
+#saveInputwrap button {
+  width: 200px;
+}
+
+#searchContainer h3,
+#saveContainer h3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#searchContainer {
+  background-color: beige;
+  padding: 10px 10px;
+}
+#saveContainer {
+  margin-top: 20px;
+  background-color: beige;
+  padding: 10px 10px;
+}

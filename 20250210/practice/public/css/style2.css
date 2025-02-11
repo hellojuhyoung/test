@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-wrap {
+  background-color: beige;
+  padding: 10px 10px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+table tr td {
+  text-align: center;
+  padding: 10px;
+  border: 1px dotted grey;
+}
+
+table th {
+  margin-bottom: 100px;
+}

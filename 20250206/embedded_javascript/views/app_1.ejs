@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EJS test</title>
+  </head>
+  <body>
+    <!-- <% for (var i = 0; i < 5; i++) { %>
+    <h1>안녕</h1>
+    <% } %> -->
+
+    <!-- sample 1 -->
+    <!-- same 'if' statment in javascript in ejs style grammar
+    <% const a = 6 %> <% const b = 7 %> <% if (a + b > 10) { %> <%= '10보다
+    큽니다' %> <% } else { %> <%= '10보다 작습니다' %> <% } %> -->
+
+    <!-- sample 2 -->
+    <div class="return"></div>
+  </body>
+</html>
+<script>
+  //sample 1
+  //sample 'if' statement in javascript
+  // const a = 6;
+  // const b = 7;
+
+  // if (a + b > 10) {
+  //   return "10보다 큽니다";
+  // } else {
+  //   return "10보다 작습니다";
+  // }
+
+  //sample 2
+  const a = 6;
+  const b = 7;
+
+  if (a + b > 10) {
+    document.querySelector(".return").innerText = "10보다 큽니다";
+  } else {
+    document.querySelector(".return").innerText = "10보다 작습니다";
+  }
+</script>

@@ -1,0 +1,60 @@
+<!-- client-side -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/css/style1.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>form 전송 실습</h2>
+    <div id="searchContainer">
+      <h3>회원정보 검색</h3>
+      <form id="searchForm" action="/getForm" method="get">
+        <input type="text" placeholder="회원 검색" name="userSearch" required />
+        <button type="submit">회원검색</button>
+      </form>
+    </div>
+
+    <hr />
+
+    <div id="saveContainer">
+      <h3>회원정보 등록</h3>
+
+      <form id="saveForm" action="/postForm" method="post">
+        <div id="saveInputwrap">
+          <input
+            type="text"
+            placeholder="이메일을 작성해 주세요"
+            id="email"
+            name="email"
+            required
+          />
+          <input
+            type="text"
+            placeholder="password를 입력해 주세요"
+            id="password"
+            name="password"
+            required
+          />
+          <input
+            type="text"
+            placeholder="회원이름을 작성해 주세요"
+            id="name"
+            name="name"
+            required
+          />
+          <input
+            type="text"
+            placeholder="나이를 작성해 주세요"
+            id="age"
+            name="age"
+            required
+          />
+          <button type="submit">회원등록</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
