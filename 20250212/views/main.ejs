@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <button onclick="onClick()">axios 요청하기</button>
+  </body>
+</html>
+<script>
+  const data = {
+    id: 1,
+    name: "kim",
+    age: 24,
+  };
+
+  //axios request sample
+  const onClick = () => {
+    // axios({
+    //   method: "get",
+    //   url: "/axiosget",
+    //   params: data,
+    // }).then((res) => {
+    //   console.log(res, "what is res?");
+    // });
+
+    //post
+    axios({
+      method: "post",
+      url: "/axiospost",
+      data: data,
+    }).then((res) => {
+      console.log(res, "what is res?");
+    });
+  };
+</script>
