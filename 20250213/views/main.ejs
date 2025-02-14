@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main</title>
+  </head>
+  <body>
+    <!-- 300x300 image upload with the title -->
+    <h1>파일 올리기</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="files" /> <br />
+      <input type="text" name="title" /> <br />
+      <button type="submit">업로드</button>
+    </form>
+    <h3>파일 한개</h3>
+    <!-- axios 로 파일 전송해서 올리기 300x300 -->
+    <div class="file1">
+      <img src="<%= url %>" alt="" width="300px" />
+    </div>
+    <hr />
+    <br />
+    <h3>파일 여러개</h3>
+    <div class="file2">
+      <img src="" alt="" />
+    </div>
+  </body>
+</html>

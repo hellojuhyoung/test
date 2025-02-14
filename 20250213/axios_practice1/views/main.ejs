@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main</title>
+    <script src="/javascript/script1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <!-- 300x300 image upload with the title -->
+    <h1>파일 올리기</h1>
+    <hr />
+    <br />
+    <form>
+      <input type="file" name="file_single" id="file_single" /> <br />
+      <input type="text" name="text_single" id="text_single" /> <br />
+      <button type="button" onclick="singleUpload()">Upload</button>
+    </form>
+
+    <h3>파일 한개</h3>
+    <!-- axios 로 파일 전송해서 올리기 300x300 -->
+    <div id="container_single">
+      <img src="" alt="" width="300px" id="singleImage" />
+    </div>
+    <hr />
+    <br />
+    <form>
+      <input type="file" name="file_multiple" id="file_multiple" multiple />
+      <br />
+      <input type="text" name="text_multiple" id="text_multiple" /> <br />
+      <button type="button" onclick="multipleUploads()">Upload</button>
+    </form>
+    <h3>파일 여러개</h3>
+    <div id="container_multiple"></div>
+  </body>
+</html>

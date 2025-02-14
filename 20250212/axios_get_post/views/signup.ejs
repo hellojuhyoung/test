@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/javascript/signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>signup</title>
+  </head>
+  <body>
+    <form id="signup">
+      <h3>회원가입</h3>
+      <hr />
+      <br />
+      이름 <input type="text" id="name" name="name" /><br /><br />
+      성별 <input type="radio" name="gender" value="male" id="male" />남
+      <input type="radio" name="gender" value="female" id="female" />여
+      <br />
+      <br />
+      생년월일
+      <!-- <label for="year"></label> -->
+      <select name="year" id="year"></select>
+      년
+      <select name="month" id="month"></select>
+      월
+      <select name="day" id="day"></select>
+      일
+      <br /><br />
+      관심사
+      <label>
+        <input
+          type="checkbox"
+          name="interests"
+          value="travel"
+          id="travel"
+        />여행</label
+      >
+      <label>
+        <input
+          type="checkbox"
+          name="interests"
+          value="fashion"
+          id="fashion"
+        />패션</label
+      >
+      <label>
+        <input
+          type="checkbox"
+          name="interests"
+          value="food"
+          id="food"
+        />음식</label
+      >
+      <br /><br />
+      <button type="button" onclick="handleSubmit()">회원가입</button>
+      <br /><br />
+      <a href="/">홈</a>
+    </form>
+  </body>
+</html>

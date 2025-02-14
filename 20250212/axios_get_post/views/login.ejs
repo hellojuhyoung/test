@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="/javascript/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      .error-text {
+        color: red;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+  </head>
+  <body>
+    <form>
+      <div id="loginContainer">
+        <h3>로그인</h3>
+
+        <div id="usernameContainer">
+          <h5>아이디</h5>
+          <input type="text" name="username" id="username" />
+        </div>
+        <div id="passwordContainer">
+          <h5>비밀번호</h5>
+          <input type="text" name="password" id="password" />
+        </div>
+        <br />
+        <div id="errorMessage" name="errorMessage"></div>
+        <br />
+        <button type="button" onclick="login()">로그인</button>
+        <br /><br />
+        <a href="/">홈</a>
+      </div>
+    </form>
+  </body>
+</html>
